@@ -1,0 +1,11 @@
+main()
+{
+	addition();
+	factorial();
+	big2();
+	rev();
+	big3();
+	pallindrome();
+	fib();
+	sort();
+}
