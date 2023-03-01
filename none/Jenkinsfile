@@ -1,6 +1,5 @@
 pipeline{
     agent none
-    {
         stages
         {
             stage('Build')
@@ -13,7 +12,9 @@ pipeline{
                 }
             }
         }
-        stages{
+
+        stages
+        {
             satge('Deploy')
             {
                 agent {lable 'slave1'}
@@ -26,7 +27,9 @@ pipeline{
 
             }
         }
-        stages {
+
+        stages 
+        {
             stage('Testing')
             {
                 agent {label 'slave2'}
@@ -40,4 +43,3 @@ pipeline{
         }
     
         }
-    }
