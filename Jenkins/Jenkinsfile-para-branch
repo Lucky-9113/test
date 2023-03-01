@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    parameters {
+  string defaultValue: 'main', name: 'BRANCH', trim: true
+}
+        stages{
+            stage('Build')
+            steps{
+            sh '''
+            echo "Hi this Build stage"
+            pwd
+            '''
+            }
+        }
+        stages{
+        stage('Deploy')
+        steps{
+        sh '''
+        echo "Hi this Deploy stage"
+        pwd
+        '''
+        }
+        }
+        stages{
+            stage('Test')
+            steps{
+            sh '''
+            echo "Hi this is Test sthage"
+            pwd
+            '''
+            }
+            }
+        }
