@@ -1,0 +1,43 @@
+pipeline{
+    agent none
+    {
+        stages
+        {
+            stage('Build')
+            {
+                agent any
+                steps{
+                    sh '''
+                    echo "Hi"
+                    '''
+                }
+            }
+        }
+        stages{
+            satge('Deploy')
+            {
+                agent {lable 'slave1'}
+                steps {
+                    sh '''
+                    echo "Hello"
+                    '''
+                    
+                }
+
+            }
+        }
+        stages {
+            stage('Testing')
+            {
+                agent {label 'slave2'}
+                steps {
+                    sh '''
+                    echo "Bye"
+                    '''
+                }
+            }
+
+        }
+    
+        }
+    }
