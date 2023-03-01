@@ -15,19 +15,13 @@ pipeline
                 }
             }
 
-            satge('Deploy')
-            {
-                agent { label 'slave1' }
-                steps 
-                {
-                    sh '''
-                    echo "Hello"
-                    sleep 5
-                    '''
-                    
-                }
-
+            stage('DEPLOY') {
+            agent { label 'slave1' } 
+            steps {
+                echo "This is a DEPLOY stage"
+                sh 'sleep 5'
             }
+        }
 
             stage('Testing')
             {
