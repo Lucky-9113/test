@@ -13,10 +13,10 @@ pipeline
                     '''
                 }
             }
-        }
+
             satge('Deploy')
             {
-                agent {lable 'slave1'}
+                agent { lable 'slave1' }
                 steps 
                 {
                     sh '''
@@ -29,7 +29,7 @@ pipeline
 
             stage('Testing')
             {
-                agent {label 'slave2'}
+                agent { label 'slave2' }
                 steps 
                 {
                     sh '''
@@ -39,3 +39,4 @@ pipeline
             }
 
         }
+}
