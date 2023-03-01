@@ -1,24 +1,24 @@
-pipeline{
+pipeline
+{
     agent none
         stages
         {
             stage('Build')
             {
                 agent any
-                steps{
+                steps
+                {
                     sh '''
                     echo "Hi"
                     '''
                 }
             }
         }
-
-        stages
-        {
             satge('Deploy')
             {
                 agent {lable 'slave1'}
-                steps {
+                steps 
+                {
                     sh '''
                     echo "Hello"
                     '''
@@ -26,20 +26,16 @@ pipeline{
                 }
 
             }
-        }
 
-        stages 
-        {
             stage('Testing')
             {
                 agent {label 'slave2'}
-                steps {
+                steps 
+                {
                     sh '''
                     echo "Bye"
                     '''
                 }
             }
 
-        }
-    
         }
