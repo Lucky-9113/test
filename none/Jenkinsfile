@@ -16,7 +16,7 @@ pipeline
 
             satge('Deploy')
             {
-                agent { lable 'slave1' }
+                agent { label 'slave1' }
                 steps 
                 {
                     sh '''
