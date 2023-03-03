@@ -1,0 +1,41 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('Gitcheckout')
+        {
+            steps{
+                sh '''
+                echo "Hi"
+                '''
+            }
+        }
+        stage('Build')
+        {
+            steps{
+                sh '''
+                echo "Hello"
+                '''
+            }
+        }
+            stage('Test')
+            {
+                steps{
+                sh '''
+                echo "Test run"
+                '''
+            }
+            }
+            stage('Sonarscan')
+            {
+                steps
+                {
+                    sh '''
+                    echo "sonar scan test"
+                    '''
+                }
+            }
+            
+        }
+    }
