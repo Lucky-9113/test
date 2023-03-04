@@ -1,32 +1,71 @@
-pipeline{
-    agent{
-        stages{
-            stage('Build')
+pipeline {
+    agent any
+
+    stages {
+        stage('BUILD') {
             steps{
-            sh '''
-            echo "Hi this Build stage"
-            pwd
-            '''
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh '''
+                        sleep 5
+                        echo "This is a BUILD stage $BRANCH_NAME"
+                        exit 1
+                    '''
+                }
             }
         }
-        stages{
-        stage('Deploy')
-        steps{
-        sh '''
-        echo "Hi this Deploy stage"
-        pwd
-        '''
-        }
-        }
-        stages{
-            stage('Test')
-            steps{
-            sh '''
-            echo "Hi this is Test sthage"
-            pwd
-            '''
+
+        stage('TEST') {
+            parallel {
+
+                stage('TEST ON LINUX MACHINE') {
+                    steps {
+                        sh '''
+                            sleep 6
+                            echo "This is a TEST on LINUX"
+                            exit 1
+                        '''
+                    }
+                }
+
+                stage('TEST ON WINDOWS MACHINE') {
+                    steps {
+                        sh '''
+                            sleep 6
+                            echo "This is a TEST on WINDOWS"
+                        '''
+                    }
+                }
+
+                stage('TEST ON MAC MACHINE') {
+                    steps {
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                            sh '''
+                                sleep 6
+                                echo "This is a TEST on WINDOWS"
+                                exit 1
+                            '''
+                        }    
+                    }
+                }
+
+                stage('TEST ON CHROME MACHINE') {
+                    steps {
+                        sh '''
+                            sleep 6
+                            echo "This is a TEST on WINDOWS"
+                        '''
+                    }
+                }
+
             }
+        }
+
+        stage('DEPLOY') {
+            steps{
+                sh '''
+                    sleep 5
+                    echo "This is a DEPLOY stage $BRANCH_NAME"
+                '''
             }
         }
     }
-}
