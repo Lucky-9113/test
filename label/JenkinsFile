@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'slave1' } 
+    agent { label 'slave3' } 
     
     environment {
   IP = "3.19.63.223"
