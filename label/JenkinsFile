@@ -12,7 +12,7 @@ pipeline {
                     #!/bin/bash 
                     pwd 
                     ls
-                    echo "This is a BUILD stage"
+                    echo "This is a BUILD stage $IP"
                     sleep 5
                 '''  
             }
