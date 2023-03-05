@@ -1,7 +1,7 @@
 node{
 // demo
    stage('SCM Checkout'){
-     git 'https://github.com/Lucky-9113/test/my-app-master'
+     git 'https://github.com/Lucky-9113/test'
    }
    stage('Compile-Package'){
       // Get maven home path
