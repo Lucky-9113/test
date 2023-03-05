@@ -12,14 +12,14 @@ node{
    stage('SonarQube Analysis') {
         def mvnHome =  tool name: 'maven-3', type: 'maven'
         withSonarQubeEnv('sonar-6') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
+          sh "${mvnHome}/usr/share/maven sonar:sonar"
         }
     }
    
    stage('Email Notification'){
       mail bcc: '', body: '''Hi Welcome to jenkins email alerts
       Thanks
-      Hari''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'hari.kammana@gmail.com'
+      Hari''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'lakshmisha9113@gmail.com'
    }
    stage('Slack Notification'){
        slackSend baseUrl: 'https://hooks.slack.com/services/',
